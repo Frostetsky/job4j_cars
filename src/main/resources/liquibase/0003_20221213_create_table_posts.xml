@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="3" author="nesterenko-n.a" runOnChange="true">
+        <preConditions onFail="MARK_RAN">
+            <not><tableExists tableName="POSTS"/></not>
+        </preConditions>
+        <createTable
+                tableName="POSTS"
+                remarks="Таблица постов"
+        >
+            <column name="ID" type="BIGSERIAL" autoIncrement="true" remarks="Идентификатор пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED" type="TIMESTAMP" remarks="Время выставления поста">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="TEXT" remarks="Описание авто">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PHOTO" type="BYTEA" remarks="Фото автомобиля">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SELL_STATUS" type="VARCHAR(50)" remarks="Статус объявления">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CAR_ID" type="BIGINT" remarks="ID автомобиля (связка)">
+                <constraints nullable="false"  foreignKeyName="FK_CARS_POSTS" references="CARS(ID)"/>
+            </column>
+            <column name="USER_ID" type="BIGINT" remarks="ID пользователя (связка)">
+                <constraints nullable="false"  foreignKeyName="FK_USERS_POSTS" references="USERS(ID)"/>
+            </column>
+            <column name="PRICE" type="VARCHAR(70)" remarks="Стоймость автомобиля">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addPrimaryKey tableName="POSTS" columnNames="ID"/>
+    </changeSet>
+</databaseChangeLog>
