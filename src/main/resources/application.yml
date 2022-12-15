@@ -1,0 +1,19 @@
+datasource:
+  username: postgres
+  password: password
+  url: jdbc:postgresql://localhost:5432/cars_market
+  driver: org.postgresql.Driver
+
+thread:
+  pool:
+    stream:
+      size: 4
+
+job:
+  event:
+    cron: 0 55 23 * * ?
+
+server:
+  port: 8085
+  servlet:
+    context-path: /carmag
