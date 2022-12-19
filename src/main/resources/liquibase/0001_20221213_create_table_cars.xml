@@ -16,13 +16,13 @@
             <column name="ID" type="BIGSERIAL" autoIncrement="true" remarks="Идентификатор автомобиля">
                 <constraints nullable="false"/>
             </column>
-            <column name="MARK" type="VARCHAR(255)" remarks="Марка автомобиля">
+            <column name="MARK" type="TEXT" remarks="Марка автомобиля">
                 <constraints nullable="false"/>
             </column>
-            <column name="MODEL" type="VARCHAR(255)" remarks="Модель автомобиля">
+            <column name="MODEL" type="TEXT" remarks="Модель автомобиля">
                 <constraints nullable="false"/>
             </column>
-            <column name="TRANSMISSION_TYPE" type="VARCHAR(50)" remarks="Тип коробки передач">
+            <column name="TRANSMISSION_TYPE" type="TEXT" remarks="Тип коробки передач">
                 <constraints nullable="false"/>
             </column>
         </createTable>
